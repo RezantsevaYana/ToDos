@@ -4,6 +4,7 @@ import './AddTaskForm.css'
 type PropsType = {
     addTask: (value: string) => void
     toggleOpenList: () => void
+    openList: () => void
 }
 
 function AddTaskForm(props: PropsType) {
@@ -26,6 +27,7 @@ function AddTaskForm(props: PropsType) {
             return;
         }
         props.addTask(value.trim());
+        props.openList();
         setValue('');
     }
 

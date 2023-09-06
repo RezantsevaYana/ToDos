@@ -30,11 +30,15 @@ function ToDoList(props: PropsType) {
         setIsOpenList(!isOpenList)
     }
 
+    const openList = () => {
+        setIsOpenList(true)
+    }
+
     return (
         <div className='todoList'>
             <h1 className='todoList__title'>{props.title}</h1>
 
-            <AddTaskForm addTask={props.addTask} toggleOpenList={toggleOpenList} />
+            <AddTaskForm addTask={props.addTask} toggleOpenList={toggleOpenList} openList={openList} />
 
             <div className={`dropdown ${isOpenList ? 'dropdown_open' : ''}`}>
                 <Tasks tasks={props.tasks} removeTask={props.removeTask} changeStatus={props.changeStatus} isOpenList={isOpenList} />
