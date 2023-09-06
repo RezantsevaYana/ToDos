@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FilterValuesType } from './App';
 
 export type TaskType = {
@@ -28,6 +28,9 @@ function ToDoList(props: PropsType) {
     }
 
     const addTasks = () => {
+        if (value === '') {
+            return;
+        }
         props.addTask(value);
         setValue('');
     }
