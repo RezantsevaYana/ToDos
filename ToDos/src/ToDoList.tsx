@@ -28,7 +28,7 @@ function ToDoList(props: PropsType) {
     }
 
     const addTasks = () => {
-        if (value === '') {
+        if (value.trim() === '') {
             return;
         }
         props.addTask(value);
