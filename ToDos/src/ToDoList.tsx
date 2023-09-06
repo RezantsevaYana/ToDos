@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FilterValuesType } from './App';
 
 export type TaskType = {
@@ -18,6 +18,23 @@ type PropsType = {
 function ToDoList(props: PropsType) {
     const [value, setValue] = useState('');
 
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => { setValue(e.target.value) }
+
+    const onKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addTasks();
+        }
+    }
+
+    const addTasks = () => {
+        props.addTask(value);
+        setValue('');
+    }
+
+    const onAllClickHandler = () => props.changeFilter('all');
+    const onActiveClickHandler = () => props.changeFilter('active');
+    const onCompletedClickHandler = () => props.changeFilter('completed');
+
 
     return (
         <div>
@@ -25,18 +42,9 @@ function ToDoList(props: PropsType) {
 
             <div>
                 <input value={value || ''}
-                    onChange={(e) => { setValue(e.target.value) }}
-                    onKeyUp={(e => {
-                        console.log(e.key)
-                        if (e.key === 'Enter') {
-                            props.addTask(value);
-                            setValue('');
-                        }
-                    })} />
-                <button onClick={() => {
-                    props.addTask(value);
-                    setValue('');
-                }}>+</button>
+                    onChange={onChangeHandler}
+                    onKeyUp={onKeyUpHandler} />
+                <button onClick={addTasks}>+</button>
             </div>
 
             <ul>
@@ -54,9 +62,9 @@ function ToDoList(props: PropsType) {
             </ul>
 
             <div>
-                <button onClick={() => { props.changeFilter('all') }}>All</button>
-                <button onClick={() => { props.changeFilter('active') }}>Active</button>
-                <button onClick={() => { props.changeFilter('completed') }}>Complited</button>
+                <button onClick={onAllClickHandler}>All</button>
+                <button onClick={onActiveClickHandler}>Active</button>
+                <button onClick={onCompletedClickHandler}>Complited</button>
             </div>
 
         </div>
