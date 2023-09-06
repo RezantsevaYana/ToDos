@@ -7,11 +7,12 @@ type Proptypes = {
     tasks: TaskType[]
     removeTask: (id: string) => void
     changeStatus: (id: string, isDone: boolean) => void
+    isOpenList: boolean
 }
 
 function Tasks(props: Proptypes) {
     return (
-        <ul>
+        <ul className='tasks-list'>
             {
                 props.tasks.map((task) => {
                     return (

@@ -1,0 +1,26 @@
+@font-face { 
+    font-family: "Unbounded";
+    src: url("./fonts/Unbounded/Unbounded-Light/Unbounded-Light.woff") format("woff"),
+    url(".fonts/Unbounded/Unbounded-Light/Unbounded-Light.woff2") format("woff2"),
+    url(".fonts/Unbounded/Unbounded-Light/Unbounded-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face { 
+    font-family: "Unbounded";
+    src: url(".fonts/Unbounded/Unbounded-Regular/Unbounded-Regular.woff") format("woff"),
+    url(".fonts/Unbounded/Unbounded-Regular/Unbounded-Regular.woff2") format("woff2"),
+    url(".fonts/Unbounded/Unbounded-Regular/Unbounded-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face { 
+    font-family: "Unbounded";
+    src: url(".fonts/Unbounded/Unbounded-Medium/Unbounded-Medium.woff") format("woff"),
+    url(".fonts/Unbounded/Unbounded-Medium/Unbounded-Medium.woff") format("woff2"),
+    url(".fonts/Unbounded/Unbounded-Medium/Unbounded-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+}

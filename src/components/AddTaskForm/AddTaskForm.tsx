@@ -3,6 +3,7 @@ import './AddTaskForm.css'
 
 type PropsType = {
     addTask: (value: string) => void
+    toggleOpenList: () => void
 }
 
 function AddTaskForm(props: PropsType) {
@@ -28,13 +29,21 @@ function AddTaskForm(props: PropsType) {
         setValue('');
     }
 
+    const onClickHandler = () => {
+        props.toggleOpenList()
+    }
+
     return (
-        <div>
-            <input value={value || ''}
-                onChange={onChangeHandler}
-                onKeyUp={onKeyUpHandler}
-                className={error ? 'error' : ''} />
-            <button onClick={addTasks}>+</button>
+        <div className="form">
+            <div className="form-input__container">
+                <button className='open-list__button' onClick={onClickHandler}></button>
+                <input value={value || ''}
+                    onChange={onChangeHandler}
+                    onKeyUp={onKeyUpHandler}
+                    className={`form__input ${error ? 'error' : ''}`}
+                    placeholder="What needs to be done" />
+                <button className="add-task__button" onClick={addTasks}>+</button>
+            </div>
             {error && <span className='error-message'>{error}</span>}
         </div>
     )

@@ -19,10 +19,13 @@ function Task(props: PropsType) {
     }
 
     return (
-        <li className={props.task.isDone ? 'isDone' : ''}>
-            <input type='checkbox' onChange={onChangeHandler} checked={props.task.isDone} />
-            <span>{props.task.title}</span>
-            <button onClick={onClickHandler}>X</button>
+        <li className='task__container'>
+            <label className="task__label">
+                <input className="task__checkbox" type='checkbox' onChange={onChangeHandler} checked={props.task.isDone} />
+                <span className="task__checkbox-custom"></span>
+                <p className={`task__title ${props.task.isDone ? 'isDone' : ''}`}>{props.task.title}</p>
+            </label>
+            <button className="task__delete-btn" onClick={onClickHandler}>x</button>
         </li>
     )
 
