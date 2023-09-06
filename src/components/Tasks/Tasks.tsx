@@ -13,14 +13,15 @@ type Proptypes = {
 function Tasks(props: Proptypes) {
     return (
         <ul className='tasks-list'>
-            {
-                props.tasks.map((task) => {
-                    return (
-                        <Task key={task.id} task={task} removeTask={props.removeTask} changeStatus={props.changeStatus} />
-                    )
-                })
-            }
+            {props.tasks.length === 0 ? (
+                <li>Список задач пуст</li>
+            ) : (
+                props.tasks.map((task) => (
+                    <Task key={task.id} task={task} removeTask={props.removeTask} changeStatus={props.changeStatus} />
+                ))
+            )}
         </ul>
+
     );
 }
 

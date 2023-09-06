@@ -10,6 +10,8 @@ function App() {
     { id: v1(), title: 'Тестовое задание', isDone: false },
     { id: v1(), title: 'Изучение TS', isDone: false },
     { id: v1(), title: 'Изучение React', isDone: true },
+    { id: v1(), title: 'Прекрасный код', isDone: true },
+    { id: v1(), title: 'Покрытие тестами', isDone: false },
   ]
 
   const [tasks, setTasks] = useState<Array<TaskType>>(initialTasks);
@@ -52,6 +54,22 @@ function App() {
     taskForToDolist = tasks.filter(task => task.isDone === false)
   }
 
+  const returnCountActiveTask = () => {
+    const count = tasks.reduce((count, task) => {
+      if (!task.isDone) {
+        return count + 1;
+      }
+      return count;
+    }, 0)
+
+    return count;
+  }
+
+  const deleteCompletedeTasks = () => {
+    let activeTasks = tasks.filter(task => task.isDone === false);
+    setTasks(activeTasks);
+  }
+
 
   return (
     <div className="App">
@@ -61,7 +79,9 @@ function App() {
         changeFilter={changeFilter}
         addTask={addTask}
         changeStatus={changeStatus}
-        filter={filter} />
+        filter={filter}
+        returnCountActiveTask={returnCountActiveTask}
+        deleteCompletedeTasks={deleteCompletedeTasks} />
     </div>
   );
 }

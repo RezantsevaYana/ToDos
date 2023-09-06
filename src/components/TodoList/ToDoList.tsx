@@ -18,6 +18,8 @@ type PropsType = {
     changeFilter: (value: FilterValuesType) => void
     addTask: (value: string) => void
     changeStatus: (id: string, isDone: boolean) => void
+    deleteCompletedeTasks: () => void
+    returnCountActiveTask: () => number
     filter: FilterValuesType
 }
 
@@ -34,9 +36,9 @@ function ToDoList(props: PropsType) {
 
             <AddTaskForm addTask={props.addTask} toggleOpenList={toggleOpenList} />
 
-            <div className={`dropdown dropdown_open ${isOpenList ? 'dropdown_open' : ''}`}>
+            <div className={`dropdown ${isOpenList ? 'dropdown_open' : ''}`}>
                 <Tasks tasks={props.tasks} removeTask={props.removeTask} changeStatus={props.changeStatus} isOpenList={isOpenList} />
-                <ToDosButtons filter={props.filter} changeFilter={props.changeFilter} />
+                <ToDosButtons filter={props.filter} changeFilter={props.changeFilter} returnCountActiveTask={props.returnCountActiveTask} deleteCompletedeTasks={props.deleteCompletedeTasks} />
             </div>
 
         </div>
