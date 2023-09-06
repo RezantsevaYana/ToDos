@@ -1,29 +1,49 @@
 import React from 'react';
 
-function ToDoList() {
+export type TaskType = {
+    id: number
+    title: string
+    isDone: boolean
+}
+
+type PropsType = {
+    title: string
+    tasks: Array<TaskType>
+    removeTask: Function
+    changeFilter: Function
+}
+
+function ToDoList(props: PropsType) {
     return (
-      <div>
-        <h1>ToDos</h1>
-  
         <div>
-          <input />
-          <button>+</button>
+            <h1>{props.title}</h1>
+
+            <div>
+                <input />
+                <button>+</button>
+            </div>
+
+            <ul>
+                {
+                    props.tasks.map((task) => {
+                        return (
+                            <li key={task.id}>
+                                <input type='checkbox' checked={task.isDone} />
+                                <span>{task.title}</span>
+                                <button onClick={() => { props.removeTask(task.id)} }>X</button>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+
+            <div>
+                <button onClick={() => { props.changeFilter('all')} }>All</button>
+                <button onClick={() => { props.changeFilter('active')} }>Active</button>
+                <button onClick={() => { props.changeFilter('completed')} }>Complited</button>
+            </div>
+
         </div>
-  
-        <ul>
-          <li>
-            <input type='checkbox' checked />
-            <span>Тестовое задание</span>
-          </li>
-        </ul>
-  
-        <div>
-          <button>All</button>
-          <button>Active</button>
-          <button>Complited</button>
-        </div>
-  
-      </div>
     );
 }
 
