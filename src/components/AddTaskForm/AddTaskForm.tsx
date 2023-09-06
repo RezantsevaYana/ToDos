@@ -5,6 +5,7 @@ type PropsType = {
     addTask: (value: string) => void
     toggleOpenList: () => void
     openList: () => void
+    isOpenList: boolean
 }
 
 function AddTaskForm(props: PropsType) {
@@ -35,14 +36,19 @@ function AddTaskForm(props: PropsType) {
         props.toggleOpenList()
     }
 
+    const onFocusHandle = () => {
+        props.openList();
+    }
+
     return (
         <div className="form">
             <div className="form-input__container">
-                <button className='open-list__button' onClick={onClickHandler}></button>
+                <button className={`open-list__button ${props.isOpenList ? 'open-list__button_open' : ''}`} onClick={onClickHandler}></button>
                 <input value={value || ''}
                     onChange={onChangeHandler}
                     onKeyUp={onKeyUpHandler}
                     className={`form__input ${error ? 'error' : ''}`}
+                    onFocus={onFocusHandle}
                     placeholder="What needs to be done" />
                 <button className="add-task__button" onClick={addTasks}>+</button>
             </div>
