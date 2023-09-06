@@ -59,3 +59,15 @@
     padding: 10px;
     cursor: pointer;
 }
+
+@media screen and (max-width:700px ){
+    .todo-count {
+        font-size: 13px;
+    }
+    .filter-button {
+        font-size: 13px;
+    }
+    .delete-completed-button {
+        font-size: 13px;
+    }
+}
