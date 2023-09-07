@@ -21,5 +21,9 @@ TypeScript, React, React Hooks
 
 ## Для запуска тестов  
 
-### `npm test`
+### `npm test`  
+
+## Ссылка на размещенный проект  
+
+https://RezantsevaYana.github.io/ToDos
 
